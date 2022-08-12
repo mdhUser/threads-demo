@@ -12,6 +12,7 @@ public class CompletableFutureDemo {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
+        //使用自定义线程池防止自带线程池随着主线程的终止而终止
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
         CompletableFuture.supplyAsync(() -> {
             System.out.println(Thread.currentThread().getName() + " ---come in");
