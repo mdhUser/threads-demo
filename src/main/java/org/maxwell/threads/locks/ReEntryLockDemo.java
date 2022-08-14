@@ -1,5 +1,8 @@
 package org.maxwell.threads.locks;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @description:
  * @author: maxwell
@@ -27,7 +30,34 @@ public class ReEntryLockDemo {
     }
 
     public static void main(String[] args) {
-        new ReEntryLockDemo().m1();
+//        new ReEntryLockDemo().m1();
+        Lock lock = new ReentrantLock();
+        new Thread(() -> {
+            lock.lock();
+            try {
+                System.out.println(Thread.currentThread().getName() + "\t -----come in 外层调用");
+                lock.lock();
+                try {
+                    System.out.println(Thread.currentThread().getName() + "\t -----come in 内层调用");
+                } finally {
+//                    lock.unlock();
+                }
+            } finally {
+                lock.unlock();
+            }
+
+        }, "t1").start();
+
+        new Thread(() -> {
+            lock.lock();
+            try {
+                System.out.println(Thread.currentThread().getName() + "\t ----获取锁执行");
+            } finally {
+                lock.unlock();
+            }
+        }, "t2").start();
+
+
     }
 
 }

@@ -1,4 +1,4 @@
-package org.maxwell.threads;
+package org.maxwell.threads.completable_future;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

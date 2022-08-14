@@ -1,4 +1,4 @@
-package org.maxwell.threads;
+package org.maxwell.threads.completable_future;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;

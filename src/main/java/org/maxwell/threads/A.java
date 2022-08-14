@@ -12,6 +12,10 @@ public class A {
         System.out.println("1");
     }
 
+    {
+        System.out.println("Ai");
+    }
+
     public A() {
         System.out.println("a");
     }
@@ -26,6 +30,10 @@ public class A {
 
         static {
             System.out.println("2");
+        }
+
+        {
+            System.out.println("Bi");
         }
 
         public B() {
