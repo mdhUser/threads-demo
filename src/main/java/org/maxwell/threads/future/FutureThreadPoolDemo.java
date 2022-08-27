@@ -1,4 +1,4 @@
-package org.maxwell.threads;
+package org.maxwell.threads.future;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

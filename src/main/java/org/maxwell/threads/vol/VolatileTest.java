@@ -1,4 +1,4 @@
-package org.maxwell.threads;
+package org.maxwell.threads.vol;
 
 /**
  * @description:
@@ -8,13 +8,13 @@ package org.maxwell.threads;
  */
 public class VolatileTest {
 
-    private volatile static boolean flag = true;
+    private static boolean flag = true;
 
     public static void main(String[] args) throws InterruptedException {
 
        new  Thread(()->{
            while (flag){}
-           System.out.println("退出线程："+Thread.currentThread().getName());
+           System.out.println("退出线程：\t"+Thread.currentThread().getName());
        },"thread1").start();
 
        Thread.sleep(1000);

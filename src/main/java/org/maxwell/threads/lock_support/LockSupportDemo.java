@@ -3,6 +3,7 @@ package org.maxwell.threads.lock_support;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -15,7 +16,28 @@ public class LockSupportDemo {
 
     public static void main(String[] args) {
 
+        // 使用LockSupport 唤醒和等待顺序不重要（可先通知再等待）
+        Thread thread = new Thread(() -> {
 
+            //暂停一秒
+            try {
+                TimeUnit.MILLISECONDS.sleep(1000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(Thread.currentThread().getName() + "\t ----come in");
+            LockSupport.park();
+            System.out.println(Thread.currentThread().getName() + "\t ----被唤醒");
+
+        }, "t1");
+
+        thread.start();
+
+        new Thread(() -> {
+            //先执行unpark方法导致其上的park()方法无效，不会对其阻塞 *许可证只有一张*
+            LockSupport.unpark(thread);
+            System.out.println(Thread.currentThread().getName() + "\t ----发出通知");
+        }, "t2").start();
 
     }
 
