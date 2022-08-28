@@ -7,4 +7,7 @@ package org.maxwell.threads.adder;
  * @date: 2022/8/28 16:06
  */
 public class AdderDemo {
+
+
+
 }

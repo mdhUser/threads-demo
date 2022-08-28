@@ -19,7 +19,6 @@ class BankAccount {
     }
 
     AtomicIntegerFieldUpdater<BankAccount> fieldUpdater = AtomicIntegerFieldUpdater.newUpdater(BankAccount.class, "money");
-
     //不加synchronized , 保证高性能原子性，局部使用原子类属性修改器
     public void transMoney() {
         fieldUpdater.addAndGet(this,100);
