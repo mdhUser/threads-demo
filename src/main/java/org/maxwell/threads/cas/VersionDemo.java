@@ -21,10 +21,9 @@ public class VersionDemo {
 
         AtomicStampedReference<Book> stampedReference = new AtomicStampedReference<>(javaBook, 1);
         log.info(stampedReference.getReference() + "\t" + stampedReference.getStamp());
-        //替换时检查版本号确定中间过程中没有被其他现场操作过，后对版本号+1
+        //替换时检查版本号确定中间过程中没有被其他现场操作过，后对版本号+1避免产生ABA问题
         boolean b = stampedReference.compareAndSet(javaBook, mysqlBook, stampedReference.getStamp(), stampedReference.getStamp() + 1);
         log.info(String.valueOf(b));
-
     }
 
 }
