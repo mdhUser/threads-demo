@@ -18,7 +18,6 @@ public class LockSupportDemo {
 
         // 使用LockSupport 唤醒和等待顺序不重要（可先通知再等待）
         Thread thread = new Thread(() -> {
-
             //暂停一秒
             try {
                 TimeUnit.MILLISECONDS.sleep(1000);

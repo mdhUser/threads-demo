@@ -34,11 +34,13 @@ public class A {
 
         {
             System.out.println("Bi");
+
         }
 
         public B() {
             System.out.println("b");
         }
+
     }
 
 }

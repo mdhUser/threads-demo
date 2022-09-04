@@ -134,7 +134,7 @@ public class AdderTestDemo {
             throw new RuntimeException(e);
         }
         end = System.currentTimeMillis();
-        System.out.println("---costTime: " + (end - start) + "ms  --- AtomicAccumulator result:" + clickNumber.accumulator.get());
+        System.out.println("---costTime: " + (end - start) + "ms  --- LongAccumulator result:" + clickNumber.accumulator.get());
 
     }
 
