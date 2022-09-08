@@ -16,6 +16,16 @@ public class SynchronizedUpDemo {
 
     public static void main(String[] args) {
 
+
+    }
+
+    private static void thinLock() {
+        try {
+            TimeUnit.MILLISECONDS.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         Object o = new Object();
         log.info(ClassLayout.parseInstance(o).toPrintable());
         new Thread(() -> {
@@ -23,8 +33,6 @@ public class SynchronizedUpDemo {
                 log.info(ClassLayout.parseInstance(o).toPrintable());
             }
         }, "t1").start();
-
-
     }
 
     private static void hashWithBiased() {
@@ -50,7 +58,7 @@ public class SynchronizedUpDemo {
     }
 
     /**
-     * 偏向锁
+     * 偏向锁 jdk15已禁用偏向锁 直接升为轻量级锁
      */
     private static void biasedLock() {
         try {
